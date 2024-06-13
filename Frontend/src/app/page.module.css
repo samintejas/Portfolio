@@ -21,5 +21,10 @@
 
 .emptydiv {
     height: 80vh;
-    width: 50vw;
+    max-height: 80vh;
+    max-width: 50vw;
+    overflow: hidden;
+    margin: 3vw;
+    display: flex;
+    align-items: center;
 }
