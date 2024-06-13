@@ -1,14 +1,25 @@
 .container {
 
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
 }
 
-.textcontainer h1 {font-size: 48px;}
-.textcontainer p {font-size: 20px;}
+.textcontainer {
+    max-width: 50vw;
+}
+
+.heroContent h2 {
+    font-size: 64px;
+}
+
+.heroContent p {
+    font-size: 32px;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
 
 .emptydiv {
     height: 80vh;
-    width: 60vw;
+    width: 50vw;
 }
