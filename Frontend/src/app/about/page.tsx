@@ -53,7 +53,7 @@ export default function About() {
           load across databases, facilitating seamless system scalability.
         </li>
         <li>
-          Engineered libraries enabling simple REST api's to be configured
+          Engineered libraries enabling simple REST APIs to be configured
           instead of going through development lifecycle.
         </li>
         <li>
