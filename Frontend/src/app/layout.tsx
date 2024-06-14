@@ -16,7 +16,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head></head>
+       <head>
+        <title>Samin Tejas</title>
+        <meta name="description" content="Welcome to my portfolio website. Here you can find my projects and contact information." />
+        <meta name="keywords" content="portfolio, projects, contact" />
+        <meta name="author" content="Samin Tejas" />
+        <meta property="og:title" content="Samin Tejas" />
+        <meta property="og:description" content="Welcome to my portfolio website. Here you can find my projects and contact information." />
+      </head>
       <body className={inter.className}>{children}</body>
     </html>
   );

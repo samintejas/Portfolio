@@ -18,7 +18,7 @@ export default function Home() {
         <div className={styles.textcontainer}>
           <div className={styles.heroContent}>
             <h2>Crafting Exceptional Backend Systems</h2>
-            <p>Delivering scalable, high-performance backend systems with designed with cutting-edge tools and industry standards. Empowering your projects with reliable, efficient, and future-ready solutions.</p>
+            <p>Delivering scalable, high-performance backend systems designed with cutting-edge tools and industry standards. Empowering your projects with reliable, efficient, and future-ready solutions.</p>
 
             <Button label="Learn more" link="/about"/>
 
