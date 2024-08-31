@@ -1,8 +1,8 @@
 {
   "projects": [
     {
-      "title": "MindMirror",
-      "description": "Mindmirror is a minimal static site generator intented to use as a note taking/sharing application.It is customizable and can support standard markdown with various features like code blocks and math.Mindmark is a CLI application written in go !",
+      "title": "Mindmirror",
+      "description": "Mindmirror is a minimal static site generator intented to use as a note taking/sharing application.It is customizable and can support standard markdown with various features like code blocks and math.Mindmirror is a CLI application written in go !",
       "imageURL": "https://images.unsplash.com/photo-1484557052118-f32bd25b45b5?q=80&w=869&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "link": "https://github.com/spaciery/mindmirror"
     },
