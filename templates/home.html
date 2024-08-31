@@ -1,0 +1,20 @@
+{{define "content"}}
+<div class="home-page-meta">
+    <h1>{{.SiteConfig.PageDetails.home.Title}}</h1>
+    <p>{{.SiteConfig.PageDetails.home.Description}}</p>
+</div>
+<div class="home-content">
+    <div class="home-prof">
+        <img
+            src="{{.SiteConfig.PersonalDetails.Photo}}"
+            alt="Description of the image"
+            class="profile-img"
+        />
+        <h1>Hey &#128075 !<br>Im {{.SiteConfig.PersonalDetails.Name}}</h1>
+    </div>
+    <div class="home-bio">
+        <p>{{.SiteConfig.PersonalDetails.ShortBio}}</p>
+        <a href="/about" class="button">Learn More</a>
+    </div>
+</div>
+{{end}}

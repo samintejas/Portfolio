@@ -1,0 +1,58 @@
+{{define "layout"}}
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{{.SiteConfig.SiteTitle}}</title>
+        <link rel="stylesheet" href="/static/css/style.css" />
+        <link rel="icon" href="{{.SiteConfig.Favicon}}" type="image/x-icon" />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+        />
+
+        <script>
+            (function() {
+                const theme = localStorage.getItem("theme") || "light"; // Default to 'light' if no theme is set
+                document.body.classList.add(`bg-${theme}`);
+            })();
+        </script>
+    </head>
+    <body>
+        <header class="header">
+            <nav class="nav-container">
+                <a class="nav-left" href="/">SAMIN TEJAS</a>
+                <div class="nav-right">
+                    <ul class="nav-links">
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/projects">Projects</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                    <button id="theme-toggle">☀️</button>
+                </div>
+            </nav>
+        </header>
+        <main class="container">{{template "content" .}}</main>
+        <footer class="footer">
+            <p>
+                &copy; 2024 {{.SiteConfig.PersonalDetails.Name}}. All rights
+                reserved.
+            </p>
+            <div class="social-links">
+                <a
+                    href="{{.SiteConfig.PersonalDetails.SocialLinks.Github}}"
+                    target="_blank"
+                    ><i class="bi bi-github"></i></i
+                ></a>
+                <a
+                    href="{{.SiteConfig.PersonalDetails.SocialLinks.Linkedin}}"
+                    target="_blank"
+                    ><i class="bi bi-linkedin"></i></i
+                ></a>
+            </div>
+        </footer>
+        <script src="/static/script/theme.js"></script>
+    </body>
+</html>
+{{end}}

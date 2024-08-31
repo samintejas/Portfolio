@@ -1,0 +1,15 @@
+{{define "content"}}
+<div class="projects">
+    <h1>{{.SiteConfig.PageDetails.projects.Description}}</h1>
+    <div class="project-grid">
+        {{range .Projects}}
+        <div class="project-card">
+            <img src="{{.ImageURL}}" alt="{{.Title}}" />
+            <h2>{{.Title}}</h2>
+            <p>{{.Description}}</p>
+            <a href="{{.Link}}" class="button">Learn More</a>
+        </div>
+        {{end}}
+    </div>
+</div>
+{{end}}
