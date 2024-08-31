@@ -4,7 +4,7 @@
   "personalDetails": {
     "name": "Samin Tejas",
     "title": "Backend Developer",
-    "photo": "/static/img/3.png",
+    "photo": "static/img/android-chrome-512x512.png",
     "email": "samintejas@gmail.com",
     "phone": "+91 9567502258",
     "location": "Kerala, India",
