@@ -1,0 +1,37 @@
+{
+  "siteTitle": "Samin Tejas",
+  "favicon": "/static/img/favicon.ico",
+  "personalDetails": {
+    "name": "Samin Tejas",
+    "title": "Backend Developer",
+    "photo": "static/img/android-chrome-512x512.png",
+    "email": "samintejas@gmail.com",
+    "phone": "+91 9567502258",
+    "location": "Kerala, India",
+    "shortBio": "Im a backend developer at 6D Technologies banglore ! ive been creating reliable, high-performance backend systems for the past 3 years.",
+    "longBio": "As a Backend Developer at 6D Technologies in Bangalore, I bring 3 years of experience in designing and optimizing high-performance backend systems, particularly within Telecom BSS stacks. My expertise lies in developing and maintaining Java-based billing and payment systems, where I excel in enhancing performance, debugging complex issues, and ensuring seamless operation. I have a proven track record of accelerating billing core systems, collaborating with cross-functional teams, and mentoring junior developers. My skills extend to microservices architecture, containerization with Kubernetes, and rigorous security and performance testing, all aimed at delivering reliable and scalable solutions.",
+    "socialLinks": {
+      "github": "https://github.com/samintejas",
+      "linkedin": "https://www.linkedin.com/in/johndoe",
+      "twitter": "https://twitter.com/johndoe"
+    }
+  },
+  "pageDetails": {
+    "home": {
+      "title": "Home",
+      "description": "Welcome to my portfolio. Explore my projects and skills."
+    },
+    "about": {
+      "title": "About Me",
+      "description": "Learn more about my background, skills, and experience."
+    },
+    "projects": {
+      "title": "My Projects",
+      "description": "Explore a selection of my best work and personal projects."
+    },
+    "contact": {
+      "title": "Get in Touch",
+      "description": "Interested in working together? Let's connect!"
+    }
+  }
+}

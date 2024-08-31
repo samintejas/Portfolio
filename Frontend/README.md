@@ -1,1 +1,0 @@
-This is a website created using [Next.js](https://nextjs.org/) project , site is under construction !!
