@@ -31,7 +31,7 @@ type PersonalDetails struct {
 	SocialLinks struct {
 		Github   string `json:"github"`
 		Linkedin string `json:"linkedin"`
-		Twitter  string `json:"twitter"`
+		Spotify  string `json:"spotify"`
 	} `json:"socialLinks"`
 }
 
