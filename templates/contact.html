@@ -4,7 +4,7 @@
     <p>Email me at: {{.SiteConfig.PersonalDetails.Email}}</p>
 
     <div class="contact-form">
-        <form action="#" method="post">
+        <form id="contact-form">
             <label for="name">Name</label>
             <input type="text" id="name" name="name" required />
 
@@ -14,8 +14,26 @@
             <label for="message">Message</label>
             <textarea id="message" name="message" required></textarea>
 
-            <button type="submit">Send</button>
+            <button type="submit">Send via WhatsApp</button>
         </form>
     </div>
+
+    <script>
+        document.getElementById("contact-form").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const name = encodeURIComponent(document.getElementById("name").value);
+            const email = encodeURIComponent(document.getElementById("email").value);
+            const message = encodeURIComponent(document.getElementById("message").value);
+
+            const fullMessage = `Name: ${name}%0AEmail: ${email}%0AMessage: ${message}`;
+
+            const phoneNumber = "919567502258";
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${fullMessage}`;
+
+            window.open(whatsappURL, "_blank");
+        });
+    </script>
+
 </div>
 {{end}}
