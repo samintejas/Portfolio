@@ -76,7 +76,7 @@ export default function Home() {
               />
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mb-12 leading-relaxed">
-              I write fast backend systems, build my own tools, and automative tasks that are tolarable for others.
+              I write fast backend systems, build my own tools, and automate tasks that are tolarable for others.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 items-start">
               <Link
