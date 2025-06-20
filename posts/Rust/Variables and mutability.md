@@ -1,3 +1,14 @@
+---
+title: "A guide to rust programming language - Variables and mutability"
+description: "Variables and mutability in rust."
+date: "2024-06-20"
+readTime: "8 min read"
+featured: false
+tags:
+  - Rust
+author: "Samin Tejas"
+---
+
 # Variables and mutability
 
 When a variable is immutable, once a value is bound to a name, you can’t change that value. we will get a compile time error if we try to assign values to an immutable variable. we can use `mut` keyword to make a variable mutable.

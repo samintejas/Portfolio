@@ -1,3 +1,14 @@
+---
+title: "A guide to rust programming language - Slices"
+description: "Slices in rust."
+date: "2024-06-20"
+readTime: "8 min read"
+featured: true
+tags:
+  - Rust
+author: "Samin Tejas"
+---
+
 # Slices
 
 *Slices* let you reference a contiguous sequence of elements in a [collection](https://doc.rust-lang.org/book/ch08-00-common-collections.html) rather than the whole collection. A slice is a kind of reference, so it does not have ownership.
@@ -31,7 +42,7 @@ this function is returning an integer which hold the index of the first word , b
 
 working : 
 
-![Untitled](Slices%20bc901b27d9c043bb923319daafa76ce6/Untitled.svg)
+![Untitled](/blog-images/rust/slices/untitled.svg)
 
 this is also valid 
 

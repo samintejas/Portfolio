@@ -1,3 +1,14 @@
+---
+title: "A guide to rust programming language - DataType"
+description: "DataTypes in rust."
+date: "2024-06-20"
+readTime: "8 min read"
+featured: false
+tags:
+  - Rust
+author: "Samin Tejas"
+---
+
 # DataType
 
 There are 2 types of datatypes in rust , scalar and compound. A *scalar* type represents a single value. Rust has four primary scalar types: integers, floating-point numbers, Booleans, and characters. *Compound types* can group multiple values into one type. Rust has two primitive compound types: tuples and arrays.

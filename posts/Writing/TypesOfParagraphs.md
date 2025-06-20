@@ -1,3 +1,14 @@
+---
+title: "Academic Writing - Paragraph types"
+description: "Paragraph types"
+date: "2024-06-20"
+readTime: "8 min read"
+featured: true
+tags:
+  - Academic Writing
+author: "Samin Tejas"
+---
+
 # Table of content
 
 - [Table of content](#table-of-content)

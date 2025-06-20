@@ -1,3 +1,14 @@
+---
+title: "A guide to rust programming language - Struct"
+description: "Struct in rust."
+date: "2024-06-20"
+readTime: "8 min read"
+featured: false
+tags:
+  - Rust
+author: "Samin Tejas"
+---
+
 # Struct
 
 A *struct*, or *structure*, is a custom data type that lets you package together and name multiple related values that make up a meaningful group. If you’re familiar with an object-oriented language, a *struct* is like an object’s data attributes.

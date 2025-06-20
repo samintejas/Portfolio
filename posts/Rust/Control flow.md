@@ -1,3 +1,14 @@
+---
+title: "A guide to rust programming language - Control flow"
+description: "Control flow in rust."
+date: "2024-06-20"
+readTime: "8 min read"
+featured: false
+tags:
+  - Rust
+author: "Samin Tejas"
+---
+
 # Control flow
 
 ```rust

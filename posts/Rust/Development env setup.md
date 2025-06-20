@@ -1,3 +1,14 @@
+---
+title: "A guide to rust programming language - Setting up the Dev environment"
+description: "Rust Dev setup"
+date: "2024-06-20"
+readTime: "8 min read"
+featured: true
+tags:
+  - Rust
+author: "Samin Tejas"
+---
+
 # Development env setup
 
 `rustup` is a command line tool for managing Rust versions and associated tools. we can install `rustup` using 

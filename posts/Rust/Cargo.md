@@ -1,3 +1,15 @@
+---
+title: "A guide to rust programming language - Cargo"
+description: "All about cargo toolkit."
+date: "2024-06-20"
+readTime: "8 min read"
+featured: false
+tags:
+  - Rust
+author: "Samin Tejas"
+---
+
+
 # Cargo
 
 Cargo is Rust’s build system and package manager.

@@ -22,17 +22,22 @@ export function getPostSlugs() {
 }
 
 export function getPostBySlug(slugPath: string) {
-  const fullPath = path.join(postsDirectory, slugPath);
-  const fileContents = fs.readFileSync(fullPath, 'utf8');
+  const decodedSlugPath = decodeURIComponent(slugPath); // Decode the slug to handle spaces
+  const fullPath = path.join(postsDirectory, decodedSlugPath);
+  
+  if (!fs.existsSync(fullPath)) {
+    throw new Error(`File not found: ${fullPath}`);
+  }
 
+  const fileContents = fs.readFileSync(fullPath, 'utf8');
   const { data, content } = matter(fileContents);
-  const parsedSlug = slugPath.replace(/\\/g, '/').replace(/\.md$/, '');
-  const category = slugPath.split(path.sep)[0];
+  const parsedSlug = decodedSlugPath.replace(/\\/g, '/').replace(/\.md$/, '');
+  const category = decodedSlugPath.split(path.sep)[0];
 
   return {
     slug: parsedSlug,
     frontmatter: { category, ...data },
-    content
+    content,
   };
 }
 
