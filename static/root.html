@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Samin Tejas</title>
+    <link href="css/style.css" rel="stylesheet" />
+    <script src="https://unpkg.com/htmx.org@2.0.4"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+      onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"
+    ></script>
+  </head>
+
+  <body class="flex flex-col h-screen max-w-3xl mx-auto p-4">
+    <section
+      class="flex items-center justify-between p-2 pb-6 border-b border-gray-400"
+    >
+      <h1>Samin Tejas</h1>
+
+      <button id="theme-toggle">
+        <svg
+          class="w-6 h-6"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 472 472"
+        >
+          <path
+            fill="currentColor"
+            d="m123 95l-30 30l-39-38l30-30zM64 216v43H0v-43h64zM256 4v63h-43V4h43zm159 83l-38 38l-30-30l38-38zm-69 292l30-29l39 38l-30 30zm59-163h64v43h-64v-43zM235 109q53 0 90.5 37.5T363 237t-37.5 90.5T235 365t-90.5-37.5T107 237t37.5-90.5T235 109zm-22 362v-63h43v63h-43zM54 388l39-39l30 30l-39 39z"
+          />
+        </svg>
+      </button>
+    </section>
+
+    <nav
+      class="flex items-start gap-6 p-2 border-b border-gray-400 text-blue-600"
+    >
+      <a
+        href="/"
+        hx-get="/"
+        hx-target="#content"
+        hx-swap="innerHTML transition:true"
+        hx-push-url="true"
+        >About</a
+      >
+      <a
+        href="/blog"
+        hx-get="/blog"
+        hx-target="#content"
+        hx-swap="innerHTML transition:true"
+        hx-push-url="true"
+        >Blog</a
+      >
+      <a
+        href="/sounds"
+        hx-get="/sounds"
+        hx-target="#content"
+        hx-swap="innerHTML transition:true"
+        hx-push-url="true"
+        >Sounds</a
+      >
+      <a
+        href="/lab"
+        hx-get="/lab"
+        hx-target="#content"
+        hx-swap="innerHTML transition:true"
+        hx-push-url="true"
+        >Lab</a
+      >
+    </nav>
+
+    <div class="flex flex-1 overflow-hidden">
+      <main
+        class="w-full overflow-y-auto p-4 pt-10"
+        id="content"
+        style="view-transition-name: content"
+      >
+        {{content}}
+      </main>
+    </div>
+
+    <section class="flex items-center justify-between gap-4 p-4">
+      <div class="text-white">
+        <svg
+          class="w-6 h-6"
+          role="img"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <title>Amazon Luna</title>
+          <path
+            fill="currentColor"
+            d="M21.757 15.4031a4.5796 4.5796 0 0 0-.8157-.3675h-.0038c-.0431-.015-.0863-.0244-.1294-.0375-.5081-.1556-2.4-.8494-3.4782-2.8126v.002l-1.9256-3.334c-.81-1.4212-.6732-3.6844-.585-4.5413a4.519 4.519 0 0 0 .0393-.3244.2659.2659 0 0 0 .0038-.0206h-.0019c.0056-.077.0113-.152.0113-.2307-.002-1.9388-1.5732-3.512-3.512-3.512s-3.512 1.5732-3.512 3.512c0 .0769.0075.1538.0113.2307h-.0038s.0019.0168.0056.045c.0075.09.0188.1762.032.2643.09.8363.2455 3.1876-.6057 4.624h.0018l-2.7582 4.7757v-.0037l-.0318.0581-.2588.45c-.0206.0375-.0356.0769-.0562.1144-.285.4931-.72 1.2057-1.1982 1.8507-.3994.54-1.0238 1.0725-1.637 1.4325l.0076.002c-.0563.028-.1144.0524-.1688.0862a2.3952 2.3952 0 0 0-.8625.8737c-.6694 1.1588-.2719 2.642.8869 3.3114.6056.3506 1.2975.4012 1.9182.2119l-.0038.0056c1.0688-.3732 2.237-.7014 2.8351-.8382 1.0032-.2288 2.4882-.285 3.332-.2963h.96c4.2845.0412 6.4558 1.8582 6.4558 1.8582l.0038-.0038c.1744.1387.3544.27.5531.3844 2.1451 1.2394 4.8902.5043 6.1277-1.6426 1.245-2.145.51-4.8901-1.637-6.1277zm-5.0308 2.267c-.4482.7743-1.0857 1.1568-2.1432 1.2375-1.0575.0806-1.2863.1425-3.2232.1425-1.937 0-2.2295-.06-3.2232-.1425-.992-.0825-1.695-.4632-2.1432-1.2376-.4482-.7744-.4107-1.6594 0-2.475.4106-.8157.6731-1.4457 1.4363-2.7676.7631-1.322 1.0669-1.8226 1.785-2.8145.72-.9919 1.2488-1.2375 2.1432-1.2375.8944 0 1.4644.3319 2.1432 1.2375.6788.9057.8719 1.2563 1.7138 2.7151s1.0556 1.952 1.5075 2.867c.4557.915.45 1.7006.0038 2.475z"
+          />
+        </svg>
+      </div>
+      <div class="flex items-center gap-4">
+        <a
+          href="https://youtube.com/@audiodelics"
+          target="_blank"
+          class="text-gray-800 hover:text-[#FF0000] transition-colors"
+        >
+          <svg
+            class="w-5 h-5"
+            role="img"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>YouTube</title>
+            <path
+              fill="currentColor"
+              d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
+            />
+          </svg>
+        </a>
+
+        <a
+          href="https://github.com/samintejas"
+          target="_blank"
+          class="text-gray-800 hover:text-zinc-500 transition-colors"
+        >
+          <svg
+            class="w-5 h-5"
+            role="img"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>GitHub</title>
+            <path
+              fill="currentColor"
+              d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+            />
+          </svg>
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/samin-tejas/"
+          target="_blank"
+          class="text-gray-800 hover:text-blue-400 transition-colors"
+        >
+          <svg
+            class="w-5 h-5"
+            role="img"
+            viewBox="0 0 128 128"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>LinkedIn</title>
+            <path
+              fill="currentColor"
+              d="M116 3H12a8.91 8.91 0 00-9 8.8v104.42a8.91 8.91 0 009 8.78h104a8.93 8.93 0 009-8.81V11.77A8.93 8.93 0 00116 3zM39.17 107H21.06V48.73h18.11zm-9-66.21a10.5 10.5 0 1110.49-10.5 10.5 10.5 0 01-10.54 10.48zM107 107H88.89V78.65c0-6.75-.12-15.44-9.41-15.44s-10.87 7.36-10.87 15V107H50.53V48.73h17.36v8h.24c2.42-4.58 8.32-9.41 17.13-9.41C103.6 47.28 107 59.35 107 75z"
+            />
+          </svg>
+        </a>
+
+        <a
+          href="https://open.spotify.com/artist/6y7nc2oT8KYpnp2ffdH9aX"
+          target="_blank"
+          class="text-gray-800 hover:text-green-400 transition-colors"
+        >
+          <svg
+            class="w-5 h-5"
+            role="img"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>Spotify</title>
+            <path
+              fill="currentColor"
+              d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"
+            />
+          </svg>
+        </a>
+      </div>
+    </section>
+    <script>
+      document.body.addEventListener("htmx:afterSwap", function (e) {
+        if (typeof renderMathInElement === "function") {
+          renderMathInElement(e.detail.target, {
+            delimiters: [
+              { left: "$$", right: "$$", display: true },
+              { left: "$", right: "$", display: false },
+            ],
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
