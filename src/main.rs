@@ -1,51 +1,131 @@
-use axum::{Router, http::HeaderMap, response::Html, routing::get};
-use std::fs;
-use tower_http::services::ServeDir;
+use axum::{
+    Router,
+    extract::State,
+    http::{HeaderMap, HeaderValue, header},
+    response::Html,
+    routing::get,
+};
+use std::sync::Arc;
+use tower::ServiceBuilder;
+use tower_http::{compression::CompressionLayer, services::ServeDir, set_header::SetResponseHeaderLayer};
 
-mod blog;
+use crate::{article::Article, template::Template};
 
-fn render(page: &str, headers: &HeaderMap) -> Html<String> {
-    let content = fs::read_to_string(format!("static/{page}")).unwrap();
+mod article;
+mod template;
 
-    if headers.contains_key("hx-request") {
-        return Html(content);
-    } else {
-        let layout = fs::read_to_string("static/root.html").unwrap();
-        return Html(layout.replace("{{content}}", &content));
-    }
+struct AppState {
+    template: Template,
+    articles: Article,
 }
 
-fn render_html(content: String, headers: &HeaderMap) -> Html<String> {
+fn render_html(content: String, headers: &HeaderMap, template: &Template) -> Html<String> {
     if headers.contains_key("hx-request") {
         Html(content)
     } else {
-        let layout = fs::read_to_string("static/root.html").unwrap();
-        Html(layout.replace("{{content}}", &content))
+        Html(template.page.root.replace("{{content}}", &content))
     }
 }
 
-async fn home(headers: HeaderMap) -> Html<String> {
-    render("info.html", &headers)
+async fn home(State(state): State<Arc<AppState>>, headers: HeaderMap) -> Html<String> {
+    render_html(state.template.page.info.clone(), &headers, &state.template)
 }
 
-async fn lab(headers: HeaderMap) -> Html<String> {
-    render("lab.html", &headers)
+async fn lab(State(state): State<Arc<AppState>>, headers: HeaderMap) -> Html<String> {
+    render_html(state.template.page.lab.clone(), &headers, &state.template)
 }
 
-async fn sounds(headers: HeaderMap) -> Html<String> {
-    render("sounds.html", &headers)
+async fn sounds(State(state): State<Arc<AppState>>, headers: HeaderMap) -> Html<String> {
+    render_html(
+        state.template.page.sounds.clone(),
+        &headers,
+        &state.template,
+    )
+}
+
+async fn article_listing(State(state): State<Arc<AppState>>, headers: HeaderMap) -> Html<String> {
+    let mut cards = String::new();
+
+    for post in &state.articles.listing {
+        let date_topic = if post.topic.is_empty() {
+            post.date.clone()
+        } else {
+            format!("{} · {}", post.date, post.topic)
+        };
+        let description = if post.description.is_empty() {
+            String::new()
+        } else {
+            post.description.clone()
+        };
+
+        let card = state
+            .template
+            .component
+            .article_card
+            .replace("{{slug}}", &post.slug)
+            .replace("{{title}}", &post.title)
+            .replace("{{date_topic}}", &date_topic)
+            .replace("{{description}}", &description);
+
+        cards.push_str(&card);
+    }
+
+    let html = state.template.page.article.replace("{{cards}}", &cards);
+    render_html(html, &headers, &state.template)
+}
+
+async fn article(
+    State(state): State<Arc<AppState>>,
+    axum::extract::Path(path): axum::extract::Path<String>,
+    headers: HeaderMap,
+) -> Html<String> {
+    match state.articles.posts.get(&path) {
+        Some(content) => {
+            let html = format!("<article class=\"prose\">{}</article>", content);
+            render_html(html, &headers, &state.template)
+        }
+        None => render_html(
+            "<h2>Post not found</h2>".to_string(),
+            &headers,
+            &state.template,
+        ),
+    }
 }
 
 #[tokio::main]
 async fn main() {
+    let state = Arc::new(AppState {
+        template: template::load_template(),
+        articles: article::load_articles(),
+    });
+
     let app = Router::new()
         .route("/", get(home))
-        .route("/blog", get(blog))
-        .route("/blog/{slug}", get(blog_post))
+        .route("/article", get(article_listing))
+        .route("/article/{*path}", get(article))
         .route("/lab", get(lab))
         .route("/sounds", get(sounds))
-        .nest_service("/css", ServeDir::new("static/css"))
-        .nest_service("/img", ServeDir::new("static/img"));
+        .nest_service(
+            "/css",
+            ServiceBuilder::new()
+                .layer(SetResponseHeaderLayer::if_not_present(
+                    header::CACHE_CONTROL,
+                    HeaderValue::from_static("public, max-age=2592000"),
+                ))
+                .service(ServeDir::new("static/css")),
+        )
+        .nest_service(
+            "/img",
+            ServiceBuilder::new()
+                .layer(SetResponseHeaderLayer::if_not_present(
+                    header::CACHE_CONTROL,
+                    HeaderValue::from_static("public, max-age=2592000"),
+                ))
+                .service(ServeDir::new("static/img")),
+        )
+        .layer(CompressionLayer::new())
+        .with_state(state);
+
     let listener = tokio::net::TcpListener::bind("0.0.0.0:8080").await.unwrap();
     println!("Listening ..");
     axum::serve(listener, app).await.unwrap();

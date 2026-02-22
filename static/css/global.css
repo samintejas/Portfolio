@@ -1,9 +1,8 @@
 @import "tailwindcss";
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 @theme {
-  --font-display: "Inter", system-ui, sans-serif;
-  --font-body: "Inter", system-ui, sans-serif;
+  --font-display: "Red Hat Display", system-ui, sans-serif;
+  --font-body: "Red Hat Display", system-ui, sans-serif;
 }
 
 body {
@@ -141,4 +140,21 @@ h6 {
 
 *:hover::-webkit-scrollbar-thumb:hover {
   background: #aaa;
+}
+
+@media print {
+  body {
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  body > .flex {
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  #content {
+    overflow: visible !important;
+    height: auto !important;
+  }
 }

@@ -1,0 +1,14 @@
+<div class="mb-4">
+  <a
+    href="/article/{{slug}}"
+    hx-get="/article/{{slug}}"
+    hx-target="#content"
+    hx-swap="innerHTML transition:true"
+    hx-push-url="true"
+    style="text-decoration: none"
+  >
+    <strong>{{title}}</strong>
+  </a>
+  <div class="color-gray-500">{{date_topic}}</div>
+  <div class="color-gray-600">{{description}}</div>
+</div>
