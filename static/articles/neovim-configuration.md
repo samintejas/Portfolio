@@ -10,7 +10,7 @@ description: A walkthrough of my neovim configuration and how its aligned with m
 
 Neovim is a terminal text editor optimized for a keyboard-driven workflow. The goal is to stop thinking about _how_ to edit and let muscle memory take over. Unlike other editors, the more skilled you become at Neovim, the faster and more efficient your editing gets.
 
-People tend to quit Neovim because of the initial learning curve, but once you get the basics down and build muscle memory, other editors start to feel sluggish. That said, simple editing alone is not enough for a productive development environment. IDEs like IntelliJ IDEA shine here — they are optimized for a richer developer experience out of the box. The good news is that Neovim is fully customizable, and with the right configuration you get the same developer experience without sacrificing editing efficiency. This article walks through how I configured Neovim for that.
+People tend to quit Neovim because of the initial learning curve, but once you get the basics down and build muscle memory, other editors start to feel sluggish. That said, simple editing alone is not enough for a productive development environment. IDEs like IntelliJ IDEA shine here, they are optimized for a richer developer experience out of the box. The good news is that Neovim is fully customizable, and with the right configuration you get the same developer experience without sacrificing editing efficiency. This article walks through how I configured Neovim for that.
 
 ## Configuration basics
 
@@ -184,7 +184,7 @@ vim.keymap.set("n", "<leader>P", '"+P',  { desc = "Paste before from system clip
 
 ## Plugin management
 
-Plugins are managed by [lazy.nvim](https://github.com/folke/lazy.nvim), the standard plugin manager for modern Neovim setups. The `config/lazy.lua` file bootstraps it on first run — if lazy.nvim is not installed it clones it from GitHub, then sets it up to load everything from the `plugins` module:
+Plugins are managed by [lazy.nvim](https://github.com/folke/lazy.nvim), the standard plugin manager for modern Neovim setups. The `config/lazy.lua` file bootstraps it on first run, if lazy.nvim is not installed it clones it from GitHub, then sets it up to load everything from the `plugins` module:
 
 ```lua
 require("lazy").setup({
@@ -335,7 +335,7 @@ Telescope is the go-to fuzzy finder for Neovim. The `fzf-native` extension swaps
 }
 ```
 
-Treesitter parses source code into an AST and uses it for accurate syntax highlighting, indentation, and text object selection — far more reliable than regex-based highlighting.
+Treesitter parses source code into an AST and uses it for accurate syntax highlighting, indentation, and text object selection, far more reliable than regex-based highlighting.
 
 ### LSP — Mason + nvim-lspconfig
 
@@ -440,6 +440,6 @@ Copilot is enabled selectively for the languages I actually use. Tab is left fre
 
 ## Closing thoughts
 
-This configuration gives me a fast, keyboard-driven editor with full IDE features — LSP, completion, formatting, fuzzy finding, and AI assistance — without the overhead of a traditional IDE. The key is that everything is explicit: I know exactly what is installed, why it is there, and what key does what. That transparency is what makes Neovim worth the initial investment.
+This configuration gives me a fast, keyboard-driven editor with full IDE features — LSP, completion, formatting, fuzzy finding, and AI assistance, without the overhead of a traditional IDE. The key is that everything is explicit: I know exactly what is installed, why it is there, and what key does what. That transparency is what makes Neovim worth the initial investment.
 
-The full config is available at `~/.config/nvim/` on my machine, structured as described above.
+The full config is available on my [Github](https://github.com/samintejas/dots).
