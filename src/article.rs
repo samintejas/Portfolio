@@ -1,3 +1,4 @@
+use katex;
 use pulldown_cmark::{CodeBlockKind, Event, Options, Parser, Tag, TagEnd};
 use std::collections::HashMap;
 use std::fs;
@@ -140,14 +141,26 @@ fn render_markdown(markdown: &str) -> String {
                 ));
             }
             Event::InlineMath(math) => {
-                html_output.push_str("<span class=\"math-inline\">");
-                html_output.push_str(&escape_html(&math));
-                html_output.push_str("</span>");
+                let opts = katex::Opts::builder()
+                    .display_mode(false)
+                    .throw_on_error(false)
+                    .build()
+                    .unwrap();
+                match katex::render_with_opts(&math, opts) {
+                    Ok(html) => html_output.push_str(&html),
+                    Err(_) => html_output.push_str(&escape_html(&math)),
+                }
             }
             Event::DisplayMath(math) => {
-                html_output.push_str("<div class=\"math-display\">");
-                html_output.push_str(&escape_html(&math));
-                html_output.push_str("</div>");
+                let opts = katex::Opts::builder()
+                    .display_mode(true)
+                    .throw_on_error(false)
+                    .build()
+                    .unwrap();
+                match katex::render_with_opts(&math, opts) {
+                    Ok(html) => html_output.push_str(&html),
+                    Err(_) => html_output.push_str(&escape_html(&math)),
+                }
             }
             _ => {
                 let mut tmp = String::new();

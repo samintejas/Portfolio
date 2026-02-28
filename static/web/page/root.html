@@ -3,81 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Samin Tejas</title>
     <meta
       name="description"
       content="Samin Tejas — Lead Engineer, Rust developer, sound designer and musician based in Wayanad, Kerala."
     />
+    <title>Samin Tejas</title>
+
     <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
     <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="preload"
-      as="style"
-      href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;600;700&display=swap"
-      onload="
-        this.onload = null;
-        this.rel = 'stylesheet';
-      "
-    />
-    <noscript
-      ><link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;600;700&display=swap"
-    /></noscript>
-    <link rel="preconnect" href="https://unpkg.com" />
     <link href="/css/style.css" rel="stylesheet" />
-    <script src="https://unpkg.com/htmx.org@2.0.4" defer></script>
-    <script>
-      function initKatex() {
-        var inlines = document.querySelectorAll(
-          ".math-inline:not(.math-rendered)",
-        );
-        var displays = document.querySelectorAll(
-          ".math-display:not(.math-rendered)",
-        );
-        if (!inlines.length && !displays.length) return;
+    <link href="/css/katex.min.css" rel="stylesheet" />
 
-        function render() {
-          inlines.forEach(function (el) {
-            el.innerHTML = katex.renderToString(el.textContent, {
-              displayMode: false,
-              throwOnError: false,
-            });
-            el.classList.add("math-rendered");
-          });
-          displays.forEach(function (el) {
-            el.innerHTML = katex.renderToString(el.textContent, {
-              displayMode: true,
-              throwOnError: false,
-            });
-            el.classList.add("math-rendered");
-          });
-        }
-
-        if (window.katex) {
-          render();
-          return;
-        }
-
-        if (!document.querySelector("link[data-katex]")) {
-          var l = document.createElement("link");
-          l.rel = "stylesheet";
-          l.href = "https://cdn.jsdelivr.net/npm/katex@0.16/dist/katex.min.css";
-          l.setAttribute("data-katex", "");
-          document.head.appendChild(l);
-        }
-
-        var s = document.createElement("script");
-        s.src = "https://cdn.jsdelivr.net/npm/katex@0.16/dist/katex.min.js";
-        s.onload = render;
-        document.head.appendChild(s);
-      }
-
-      document.addEventListener("DOMContentLoaded", initKatex);
-      document.addEventListener("htmx:afterSwap", initKatex);
-    </script>
+    <script src="/js/htmx.min.js" defer></script>
   </head>
 
   <body class="flex flex-col h-screen max-w-3xl mx-auto p-4">
@@ -86,18 +23,6 @@
     >
       <h1>Samin Tejas</h1>
 
-      <button id="theme-toggle" aria-label="Toggle theme" hidden>
-        <svg
-          class="w-6 h-6"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 472 472"
-        >
-          <path
-            fill="currentColor"
-            d="m123 95l-30 30l-39-38l30-30zM64 216v43H0v-43h64zM256 4v63h-43V4h43zm159 83l-38 38l-30-30l38-38zm-69 292l30-29l39 38l-30 30zm59-163h64v43h-64v-43zM235 109q53 0 90.5 37.5T363 237t-37.5 90.5T235 365t-90.5-37.5T107 237t37.5-90.5T235 109zm-22 362v-63h43v63h-43zM54 388l39-39l30 30l-39 39z"
-          />
-        </svg>
-      </button>
     </header>
 
     <nav
@@ -107,6 +32,7 @@
         href="/"
         hx-get="/"
         hx-target="#content"
+        hx-trigger="mousedown"
         hx-swap="innerHTML transition:true"
         hx-push-url="true"
         >About</a
@@ -115,14 +41,16 @@
         href="/article"
         hx-get="/article"
         hx-target="#content"
+        hx-trigger="mousedown"
         hx-swap="innerHTML transition:true"
         hx-push-url="true"
         >Articles</a
       >
-      <a
+      <!-- <a
         href="/sounds"
         hx-get="/sounds"
         hx-target="#content"
+        hx-trigger="mousedown"
         hx-swap="innerHTML transition:true"
         hx-push-url="true"
         >Sounds</a
@@ -131,10 +59,11 @@
         href="/lab"
         hx-get="/lab"
         hx-target="#content"
+        hx-trigger="mousedown"
         hx-swap="innerHTML transition:true"
         hx-push-url="true"
         >Lab</a
-      >
+      > -->
     </nav>
 
     <div class="flex flex-1 overflow-hidden">
@@ -148,7 +77,27 @@
     </div>
 
     <footer class="flex items-center justify-between gap-4 p-4">
-      <div class="text-white"></div>
+      <a
+        href="mailto:samintejas@gmail.com"
+        class="text-gray-800 hover:text-red-500 transition-colors"
+        aria-label="Email"
+      >
+        <svg
+          class="w-5 h-5"
+          role="img"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <title>Email</title>
+          <rect x="2" y="4" width="20" height="16" rx="2" />
+          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+        </svg>
+      </a>
       <div class="flex items-center gap-4">
         <a
           href="https://youtube.com/@audiodelics"

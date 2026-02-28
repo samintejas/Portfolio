@@ -1,9 +1,17 @@
 ---
 title: Math, Algorithms, and Code
 date: 2026-02-17
+topic: Algorithms
+description: A look at classic algorithms and the mathematics behind them, from prime sieves to RSA.
 ---
 
-A collection of interesting mathematical concepts and their implementations. Nothing fancy — just things I find elegant.
+# Math, Algorithms, and Code
+
+---
+
+A collection of interesting mathematical concepts and their implementations.
+
+> The content here was pulled from the internet to test KaTeX and markdown rendering on this site. Math is now rendered server-side via the `katex` Rust crate. No client-side JS, no layout shift.
 
 ## The Sieve of Eratosthenes
 
@@ -55,7 +63,7 @@ fn power(mut base: u64, mut exp: u64, modulus: u64) -> u64 {
 }
 ```
 
-This is the backbone of RSA encryption. Computing $m^e \bmod n$ where $e$ can be $65537$ or larger — impossible without this trick.
+This is the backbone of RSA encryption. Computing $m^e \bmod n$ where $e$ can be $65537$ or larger. Impossible without this trick.
 
 ## The Birthday Paradox
 
@@ -75,7 +83,7 @@ def birthday_probability(n):
 # birthday_probability(70) ≈ 0.9992
 ```
 
-This matters in cryptography. A hash function with 128-bit output doesn't need $2^{128}$ attempts to find a collision — only about $2^{64}$ (the square root). This is why SHA-256 provides 128-bit collision resistance, not 256-bit.
+This matters in cryptography. A hash function with 128-bit output doesn't need $2^{128}$ attempts to find a collision, only about $2^{64}$ (the square root). This is why SHA-256 provides 128-bit collision resistance, not 256-bit.
 
 ## Fibonacci via Matrix Exponentiation
 
@@ -194,7 +202,7 @@ fn euler_totient(mut n: u64) -> u64 {
 }
 ```
 
-Euler's theorem: $a^{\varphi(n)} \equiv 1 \pmod{n}$ when $\gcd(a, n) = 1$. Fermat's little theorem is the special case where $n$ is prime. This is why RSA works — decryption undoes encryption because $e \cdot d \equiv 1 \pmod{\varphi(n)}$.
+Euler's theorem: $a^{\varphi(n)} \equiv 1 \pmod{n}$ when $\gcd(a, n) = 1$. Fermat's little theorem is the special case where $n$ is prime. This is why RSA works: decryption undoes encryption because $e \cdot d \equiv 1 \pmod{\varphi(n)}$.
 
 ---
 

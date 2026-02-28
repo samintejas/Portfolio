@@ -1,13 +1,15 @@
 use axum::{
     Router,
-    extract::State,
+    extract::{Path, State},
     http::{HeaderMap, HeaderValue, header},
     response::Html,
     routing::get,
 };
 use std::sync::Arc;
 use tower::ServiceBuilder;
-use tower_http::{compression::CompressionLayer, services::ServeDir, set_header::SetResponseHeaderLayer};
+use tower_http::{
+    compression::CompressionLayer, services::ServeDir, set_header::SetResponseHeaderLayer,
+};
 
 use crate::{article::Article, template::Template};
 
@@ -76,7 +78,7 @@ async fn article_listing(State(state): State<Arc<AppState>>, headers: HeaderMap)
 
 async fn article(
     State(state): State<Arc<AppState>>,
-    axum::extract::Path(path): axum::extract::Path<String>,
+    Path(path): Path<String>,
     headers: HeaderMap,
 ) -> Html<String> {
     match state.articles.posts.get(&path) {
@@ -108,6 +110,7 @@ async fn main() {
         .nest_service(
             "/css",
             ServiceBuilder::new()
+                .layer(CompressionLayer::new())
                 .layer(SetResponseHeaderLayer::if_not_present(
                     header::CACHE_CONTROL,
                     HeaderValue::from_static("public, max-age=2592000"),
@@ -115,8 +118,19 @@ async fn main() {
                 .service(ServeDir::new("static/css")),
         )
         .nest_service(
+            "/js",
+            ServiceBuilder::new()
+                .layer(CompressionLayer::new())
+                .layer(SetResponseHeaderLayer::if_not_present(
+                    header::CACHE_CONTROL,
+                    HeaderValue::from_static("public, max-age=2592000"),
+                ))
+                .service(ServeDir::new("static/js")),
+        )
+        .nest_service(
             "/img",
             ServiceBuilder::new()
+                .layer(CompressionLayer::new())
                 .layer(SetResponseHeaderLayer::if_not_present(
                     header::CACHE_CONTROL,
                     HeaderValue::from_static("public, max-age=2592000"),
